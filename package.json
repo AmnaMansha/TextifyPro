@@ -57,10 +57,11 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx,tsx}": [
-      "npm run eslint: fix",
+      "npm run eslint:fix",
       "git add"
     ]
   },
+  
   "browserslist": {
     "production": [
       ">0.2%",
