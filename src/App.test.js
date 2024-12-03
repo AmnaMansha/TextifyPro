@@ -1,8 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
 
-test('renders learn react link', () => {
+test("renders  home navigation link", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/Our Solutions designed for you/i); // Case-insensitive match
   expect(linkElement).toBeInTheDocument();
 });

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
+import logger from "../utils/logger";
 //styling
 
 import { makeStyles } from "@mui/styles";
@@ -36,6 +37,7 @@ const Counter = (props) => {
   const duration = 2;
   useEffect(() => {
     let start = 0;
+    logger.info("Counter component mounted");
     // first three numbers from props
     const end = parseInt(number.substring(0, 3));
     const end2 = parseInt(number2.substring(0, 3));
@@ -44,22 +46,26 @@ const Counter = (props) => {
     if (start === end) return;
 
     // find duration per increment
-    let totalMilSecDur = parseInt(duration);
-    let incrementTime = (totalMilSecDur / end) * 1000;
-    let incrementTime2 = (totalMilSecDur / end2) * 1000;
-    let incrementTime3 = (totalMilSecDur / end3) * 1000;
+    const totalMilSecDur = parseInt(duration);
+    const incrementTime = (totalMilSecDur / end) * 1000;
+    const incrementTime2 = (totalMilSecDur / end2) * 1000;
+    const incrementTime3 = (totalMilSecDur / end3) * 1000;
 
     // timer increments start counter
     // then updates count
     // ends if start reaches end
-    let timer = setInterval(
+    const timer = setInterval(
       () => {
         start += 1;
+        logger.debug(`Counter incremented to ${start}`);
         setCount(String(start) + number.substring(3));
         setCount2(String(start) + number2.substring(3));
         setCount3(String(start) + number3.substring(3));
-
-        if (start === end) clearInterval(timer);
+        if (start === end) {
+          clearInterval(timer);
+          logger.info("Counter component unmounted");
+        }
+         
         if (start === end2) clearInterval(timer);
         if (start === end3) clearInterval(timer);
       },

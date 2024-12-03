@@ -7,7 +7,8 @@ import Carasouel from "../Component/Carasouel";
 import Slider from "../Component/Slider";
 import { Box, Container, Card, Button, Grid } from "@mui/material";
 import Counter from "../Component/Counter";
-
+import logger from "../utils/logger"; 
+import { useNavigate } from "react-router-dom";
 import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
   section1: {
@@ -83,6 +84,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Landing() {
+  const navigate = useNavigate();
+
+const handleClick = () => {
+  navigate("/bookdemo");
+};
+  logger.info("Landing page rendered");
   const classes = useStyles();
   const solutions = [
     {
@@ -149,6 +156,7 @@ export default function Landing() {
               style={{ textDecoration: "none" }}
             >
               <Button
+                onClick={handleClick}
                 style={{
                   background: "#022ba7",
                   color: "#ffff",

@@ -14,6 +14,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button, Slide } from "@mui/material";
+import logger from "../utils/logger";
 // import salelabs from "../../_mock/images/salelabs.png";
 // import salelabs2 from "../../_mock/images/salelabs2.png";
 // import fidelity from "../../_mock/images/fidelity.png";
@@ -35,7 +36,9 @@ export default function DrawerAppBar() {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const handleLoginClick = () => {
+    logger.info("Login button clicked");
+  };
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <div
@@ -137,6 +140,7 @@ export default function DrawerAppBar() {
               style={{ textDecoration: "none" }}
             >
               <Button
+               onClick={handleLoginClick}
                 style={{
                   background: "#fff",
                   color: "#000",
