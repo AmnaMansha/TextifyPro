@@ -78,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   section3: {
     backgroundColor: "#D3FFEB",
-    borderRadius: "2rem",
+    borderRadius: "2rem,
     margin: "1rem",
   },
 }));
