@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   h3: {
-    fontSize: "2rem",
+    fontSize: "2rem",,
     fontWeight: 900,
     lineHeight: " 2.75rem",
   },
