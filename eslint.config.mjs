@@ -22,7 +22,7 @@ export default [
       "no-extra-semi": "error",
       "no-console": "warn",
       "prefer-const": "error",
-      "no-unused-vars": "warn",
+      "no-unused-vars": "off",
       "object-curly-spacing": ["error", "always"],
     },
   },

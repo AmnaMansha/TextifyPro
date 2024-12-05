@@ -87,7 +87,7 @@ export default function Landing() {
   const navigate = useNavigate();
 
 const handleClick = () => {
-  navigate("/bookdemo");;
+  navigate("/bookdemo");
 };
   logger.info("Landing page rendered");
   const classes = useStyles();
