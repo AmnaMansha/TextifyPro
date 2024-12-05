@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   h3: {
-    fontSize: "2rem",,
+    fontSize: "2rem",
     fontWeight: 900,
     lineHeight: " 2.75rem",
   },
@@ -110,7 +110,7 @@ const handleClick = () => {
     {
       heading: "Analyser",
       desp: "Automatic topic tagger, keywords, questions and more!",
-      src: "assets/document.gif",
+      src: "assets/doc.gif",
     },
   ];
   const requirements = [

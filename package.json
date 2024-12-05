@@ -58,7 +58,7 @@
   "lint-staged": {
     "src/**/*.{js,jsx,tsx}": [
       "npm run eslint:fix",
-      "git add ."
+      "git add"
     ]
   },
   "browserslist": {
