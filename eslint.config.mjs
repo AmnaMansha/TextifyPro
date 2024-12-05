@@ -19,6 +19,7 @@ export default [
       quotes: ["error", "double"],
       semi: ["error", "always"],
       eqeqeq: ["error", "always"],
+      "no-extra-semi": "error",
       "no-console": "warn",
       "prefer-const": "error",
       "no-unused-vars": "warn",

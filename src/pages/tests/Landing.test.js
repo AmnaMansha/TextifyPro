@@ -11,7 +11,7 @@ jest.mock("./../../Component/Carasouel", () => () => <div>Carasouel</div>);
 jest.mock("./../../Component/Slider", () => () => <div>Slider</div>);
 jest.mock("./../../Component/Counter", () => () => <div>Counter</div>);
 
-describe("Landing Component" () => {
+describe("Landing Component", () => {
   test("should render the Header component", () => {
     render(<Landing/>, { wrapper: MemoryRouter });
     expect(screen.getByText("Header")).toBeInTheDocument();
