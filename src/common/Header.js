@@ -1,5 +1,9 @@
 import * as React from "react";
+// Importing React library for building the component.
+
 import { Link as RouterLink, Link } from "react-router-dom";
+// Importing Link components for navigation between routes.
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -14,33 +18,42 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button, Slide } from "@mui/material";
+// Importing Material-UI components for creating a responsive and styled user interface.
+
 import logger from "../utils/logger";
-// import salelabs from "../../_mock/images/salelabs.png";
-// import salelabs2 from "../../_mock/images/salelabs2.png";
-// import fidelity from "../../_mock/images/fidelity.png";
+// Importing a custom logger utility to log messages for debugging and monitoring.
 
 const drawerWidth = 240;
+// Setting the width of the drawer for mobile navigation.
+
 const navItems = [
   { name: "Product", route: "/product" },
   { name: "Pricing", route: "/pricing" },
   { name: "Demo", route: "/demo" },
-  {
-    name: "About",
-    route: "/aboutus",
-  },
+  { name: "About", route: "/aboutus" },
 ];
+// Defining the navigation items with their names and routes.
 
 export default function DrawerAppBar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  // State to control whether the mobile drawer is open or closed.
+
   const trigger = useScrollTrigger();
+  // Hook to detect scrolling for additional behavior (not used in this version).
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  // Toggles the state of the mobile drawer.
+
   const handleLoginClick = () => {
     logger.info("Login button clicked");
   };
+  // Logs a message when the login button is clicked.
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      {/* Mobile Drawer content */}
       <div
         style={{
           flexGrow: 1,
@@ -50,7 +63,7 @@ export default function DrawerAppBar() {
           padding: "0.3rem",
         }}
       >
-        {/* <img src={} alt="salelabs" height="40" /> */}
+        {/* Placeholder for a logo or branding image */}
       </div>
       <Divider />
       <List>
@@ -72,9 +85,11 @@ export default function DrawerAppBar() {
       </List>
     </Box>
   );
+  // Drawer content for mobile, including navigation links mapped from `navItems`.
 
   return (
     <Box sx={{ display: "flex" }}>
+      {/* Main container for the navigation bar */}
       <AppBar
         component="nav"
         style={{
@@ -83,6 +98,7 @@ export default function DrawerAppBar() {
         position="fixed"
         elevation={0}
       >
+        {/* Top AppBar for navigation */}
         <Toolbar>
           <IconButton
             color="black"
@@ -93,6 +109,7 @@ export default function DrawerAppBar() {
           >
             <MenuIcon sx={{ display: { lg: "none", md: "none" } }} />
           </IconButton>
+          {/* Icon button for toggling the drawer in mobile view */}
 
           <div
             style={{
@@ -106,6 +123,8 @@ export default function DrawerAppBar() {
               height="40"
             />
           </div>
+          {/* Logo displayed in larger screens */}
+
           <Box
             sx={{
               display: { xs: "none", sm: "block" },
@@ -126,6 +145,8 @@ export default function DrawerAppBar() {
               </Link>
             ))}
           </Box>
+          {/* Navigation links displayed in desktop view */}
+
           <Box
             sx={{
               position: "absolute",
@@ -140,7 +161,7 @@ export default function DrawerAppBar() {
               style={{ textDecoration: "none" }}
             >
               <Button
-               onClick={handleLoginClick}
+                onClick={handleLoginClick}
                 style={{
                   background: "#fff",
                   color: "#000",
@@ -172,6 +193,7 @@ export default function DrawerAppBar() {
               </Button>
             </Link>
           </Box>
+          {/* Buttons for Login and Free Trial in the header */}
         </Toolbar>
       </AppBar>
 
@@ -193,9 +215,11 @@ export default function DrawerAppBar() {
         >
           {drawer}
         </Drawer>
+        {/* Temporary Drawer for mobile navigation */}
       </Box>
       <Box component="main" sx={{ p: 3 }}>
         <Toolbar />
+        {/* Empty Box to account for AppBar height */}
       </Box>
     </Box>
   );

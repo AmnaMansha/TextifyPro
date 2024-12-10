@@ -16,6 +16,7 @@
     "assert": "^2.1.0",
     "browserify-zlib": "^0.2.0",
     "buffer": "^6.0.3",
+    "docdash": "^2.0.2",
     "fs": "^0.0.1-security",
     "https-browserify": "^1.0.0",
     "logger": "^0.0.1",
@@ -43,7 +44,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,tsx}",
     "eslint:fix": "eslint . --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docs": "jsdoc -d docs --configure jsdocConf.json"
   },
   "eslintConfig": {
     "extends": [
