@@ -1,21 +1,35 @@
-# TextifyPro Setup and Usage Tutorial
+# TextifyPro Setup and Usage Tutorial  
 
-**TextifyPro** is a platform offering services like transcription, live dictation, subtitling, and analysis. The landing page showcases these services and available plans. Users can log in, choose services, book demos, and purchase plans.
+**TextifyPro** is a platform offering services like transcription, live dictation, subtitling, and analysis. The landing page showcases these services and available plans. Users can log in, choose services, book demos, and purchase plans.  
 
 ---
 
-## Prerequisites
+## Table of Contents  
 
-Before you begin, make sure you have the following installed:
+1. [Prerequisites](#prerequisites)  
+2. [Setting Up the Project](#setting-up-the-project)  
+3. [Running the Development Server](#running-the-development-server)  
+4. [NPM Scripts](#npm-scripts)  
+5. [Features of TextifyPro](#features-of-textifypro)  
+6. [Code Example: Service Selection](#code-example-service-selection)  
 
-- **Node.js** (v14 or above)
-- **npm** (Node Package Manager, included with Node.js)
+---
 
-Verify installations by running the following commands:
+## Prerequisites  
 
-```bash
-node -v
+Before you begin, ensure that you have the following installed on your machine:  
+
+- **Node.js** (version 14 or above)  
+- **npm** (Node Package Manager, included with Node.js)  
+
+To verify your installations, run the following commands:  
+
+```bash  
+node -v  
 npm -v
+
+## Setting-up-the-project
+
 Installation Steps
 Follow these steps to set up TextifyPro on your local machine:
 
