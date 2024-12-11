@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
   list_item: {
-    fontSize: '20px',
+    fontSize: "20px",
     color: "#0A2640",
     
   },
@@ -198,6 +198,7 @@ export default function Landing() {
               <img src={item.src} alt="gifimg" width="100" />
               <h1>{item.heading}</h1>
               <p>{item.desp}</p>
+            
               <Button
                 style={{
                   background: "#022ba7",
