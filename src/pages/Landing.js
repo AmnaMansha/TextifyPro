@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
   },
   list_item: {
-    fontSize: "20px",
+    fontSize: '20px',
     color: "#0A2640",
     
   },
