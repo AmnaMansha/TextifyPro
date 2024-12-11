@@ -184,10 +184,10 @@ export default function Landing() {
         <h1 className={classes.heading}>Our Solutions designed for you</h1>
       </Box>
 
+
       <Box
         sx={{
           display: { lg: "flex" },
-
           padding: "5rem",
           textAlign: "center",
         }}
