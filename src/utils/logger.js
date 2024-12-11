@@ -1,15 +1,24 @@
 
 import log from "loglevel";
 
-// Create the logger with a name
-const logger = log.getLogger("myAppLogger"); 
 
-// Set the log level (optional, default is "info")
-logger.setLevel("info");
 
-// Example usage:
-logger.info("This is an info message");
-logger.error("This is an error message");
-logger.warn("This is a warning message");
-
-export default logger;
+const logger = {
+    info: (message) => {
+      console.info(`[INFO] ${new Date().toISOString()} - ${message}`);
+    },
+    warn: (message) => {
+      console.warn(`[WARN] ${new Date().toISOString()} - ${message}`);
+    },
+    error: (message) => {
+      console.error(`[ERROR] ${new Date().toISOString()} - ${message}`);
+    },
+    debug: (message) => {
+      if (process.env.NODE_ENV === "development") {
+        console.debug(`[DEBUG] ${new Date().toISOString()} - ${message}`);
+      }
+    },
+  };
+  
+  export default logger;
+  
