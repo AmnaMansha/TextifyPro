@@ -82,15 +82,18 @@ jobs:
         restore-keys: ${{ runner.os }}-sonar
 
     - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master  # Using master instead of v1
+      uses: SonarSource/sonarqube-scan-action@v4.1.0
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
-        args: >
-          -Dsonar.projectKey=AmnaMansha_TextifyPro
-          -Dsonar.organization=amnamansha
-
+          args: >
+            -Dsonar.projectKey=AmnaMansha_TextifyPro
+            -Dsonar.organization=amnamansha
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.sources=.
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+            -Dsonar.scm.provider=git
   # Job 4: Release Creation and Changelog Generation
   release:
     runs-on: ubuntu-latest
