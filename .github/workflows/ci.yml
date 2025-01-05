@@ -54,7 +54,7 @@ jobs:
       run: npm run lint
 
     - name: Run secrets detection with git-secrets
-      uses: awslabs/git-secrets@v1
+      uses:  awslabs/git-secrets@1.3.0
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
