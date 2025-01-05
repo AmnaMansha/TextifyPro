@@ -14,7 +14,6 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-      # Prevent all matrix jobs from failing if one fails
       fail-fast: false
     
     steps:
@@ -67,6 +66,7 @@ jobs:
           args: >
             -Dsonar.projectKey=AmnaMansha_TextifyPro
             -Dsonar.organization=amnamansha
+            -Dsonar.analysis.mode=preview # Optional: Use this mode if you want preview results
 
   release:
     needs: [test, code-quality]
