@@ -75,6 +75,12 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+    
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@v1
       env:
@@ -83,6 +89,8 @@ jobs:
         args: >
           -Dsonar.projectKey=AmnaMansha_TextifyPro
           -Dsonar.organization=amnamansha
+          -Dsonar.host.url=https://sonarcloud.io
+    
       
         # Replace the following with the appropriate SonarQube settings if not using SonarCloud
         # sonar.organization: your-org
