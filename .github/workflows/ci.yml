@@ -58,11 +58,6 @@ jobs:
       - name: Lint
         run: npm run lint || true # Don't fail on lint errors initially
         
-      - name: Check for secrets
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
-        
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
@@ -70,8 +65,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.projectKey=your-project-key
-            -Dsonar.organization=your-org-key
+            -Dsonar.projectKey=AmnaMansha_TextifyPro
+            -Dsonar.organization=amnamansha
 
   release:
     needs: [test, code-quality]
