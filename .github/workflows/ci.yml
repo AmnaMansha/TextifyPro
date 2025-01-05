@@ -54,14 +54,39 @@ jobs:
       run: npm run lint
 
     - name: Run secrets detection with git-secrets
-      uses: github/git-secrets@v1
+      uses: awslabs/git-secrets@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
-  # Job 3: Release Creation and Changelog Generation
-  release:
+  # Job 3: SonarQube Analysis (using SONAR_TOKEN)
+  sonar:
     runs-on: ubuntu-latest
     needs: lint
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarcloud-github-action@v1
+      with:
+        token: ${{ secrets.SONAR_TOKEN }}
+        # Replace the following with the appropriate SonarQube settings if not using SonarCloud
+        # sonar.organization: your-org
+        # sonar.projectKey: your-project-key
+
+  # Job 4: Release Creation and Changelog Generation
+  release:
+    runs-on: ubuntu-latest
+    needs: sonar
     if: startsWith(github.ref, 'refs/tags/v')
 
     steps:
@@ -86,7 +111,7 @@ jobs:
         name: Release ${{ github.ref }}
         files: ./dist/* # Add your build output or artifact here
 
-  # Job 4: Deploy Documentation to GitHub Pages
+  # Job 5: Deploy Documentation to GitHub Pages
   deploy-docs:
     runs-on: ubuntu-latest
     needs: release
