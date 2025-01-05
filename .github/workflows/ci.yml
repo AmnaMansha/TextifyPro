@@ -20,10 +20,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
@@ -40,10 +40,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
 
@@ -58,17 +58,17 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
-  # Job 3: SonarQube Analysis (using SONAR_TOKEN)
+  # Job 3: SonarCloud Analysis
   sonar:
     runs-on: ubuntu-latest
     needs: lint
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
 
@@ -81,7 +81,7 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     
-    - name: SonarQube Scan
+    - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@v1
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -90,11 +90,6 @@ jobs:
           -Dsonar.projectKey=AmnaMansha_TextifyPro
           -Dsonar.organization=amnamansha
           -Dsonar.host.url=https://sonarcloud.io
-    
-      
-        # Replace the following with the appropriate SonarQube settings if not using SonarCloud
-        # sonar.organization: your-org
-        # sonar.projectKey: your-project-key
 
   # Job 4: Release Creation and Changelog Generation
   release:
@@ -104,10 +99,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
 
@@ -132,10 +127,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: 18.x
 
