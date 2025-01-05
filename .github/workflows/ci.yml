@@ -77,8 +77,13 @@ jobs:
 
     - name: SonarQube Scan
       uses: SonarSource/sonarcloud-github-action@v1
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
-        token: ${{ secrets.SONAR_TOKEN }}
+        args: >
+          -Dsonar.projectKey=AmnaMansha_TextifyPro
+          -Dsonar.organization=amnamansha
+      
         # Replace the following with the appropriate SonarQube settings if not using SonarCloud
         # sonar.organization: your-org
         # sonar.projectKey: your-project-key
