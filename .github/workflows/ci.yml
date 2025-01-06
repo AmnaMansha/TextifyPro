@@ -162,40 +162,42 @@ jobs:
   # Job 5: Deploy Documentation to GitHub Pages
  
   deploy-docs:
-      runs-on: ubuntu-latest
-      needs: release
+    runs-on: ubuntu-latest
+    needs: release
 
-      steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
-          cache: 'npm'
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+        cache: 'npm'
 
-      - name: Install dependencies
-        run: |
-          npm ci
-          npm install -g jsdoc
-          npm install --save-dev jsdoc-to-markdown
+    - name: Install dependencies
+      run: |
+        npm ci
+        npm install -g jsdoc
+        npm install --save-dev jsdoc-to-markdown
 
-      - name: Clean previous docs
-        run: rm -rf docs
+    - name: Clean previous docs
+      run: rm -rf docs
 
-      - name: Generate documentation
-        run: |
-          # Generate docs directly from source files, not the bundle
-          npx jsdoc -c jsdocConf.json src/**/*.{js,jsx}
+    - name: Generate documentation
+      run: |
+        # Generate docs for .js files only
+        npx jsdoc -c jsdocConf.json src/**/*.js
 
-      - name: Check generated docs
-        run: ls -la docs
+    - name: Check generated docs
+      run: |
+        echo "Generated documentation structure:"
+        ls -la docs
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
