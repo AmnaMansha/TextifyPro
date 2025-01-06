@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Landing.js - Documentation</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    
+    <h2><a href="index.html">Home</a></h2>
+    
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Landing.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Landing.js
+ * This component represents the main landing page of the application.
+ * Includes logging for analytics and debugging.
+ */
+
+import * as React from "react";
+
+import { Link as RouterLink, Link } from "react-router-dom";
+import Footer from "../common/Footer";
+import Header from "../common/Header";
+import Cards from "../common/Cards";
+import Carasouel from "../Component/Carasouel";
+import Slider from "../Component/Slider";
+import { Box, Container, Card, Button, Grid } from "@mui/material";
+import Counter from "../Component/Counter";
+import logger from "../utils/logger"; 
+import { useNavigate } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+
+// Custom styles for the component
+const useStyles = makeStyles((theme) => ({
+  section1: {
+    background: "linear-gradient(to right bottom, #f0f4fc 60%, #ffff 10%)",
+    padding: "4rem",
+    marginTop: "-4rem",
+  },
+  heading: {
+    fontSize: "2rem",
+    fontWeight: "bold",
+    color: "#0A2640",
+    marginTop: "3rem",
+    
+  },
+  sologan: {
+    fontSize: "16px",
+    marginTop: "3rem",
+    lineHeight: "2rem",
+    color: "black",
+  },
+  list_item: {
+    fontSize: "20px",
+    color: "#0A2640",
+    
+  },
+}));
+
+/**
+ * Landing Component
+ */
+export default function Landing() {
+  const navigate = useNavigate();
+  const classes = useStyles();
+
+  // Log component mount
+  React.useEffect(() => {
+    logger.info("Landing page component mounted");
+
+    return () => {
+      logger.info("Landing page component unmounted");
+    };
+  }, []);
+
+  const handleClick = () => {
+    try {
+      logger.info("Book Demo button clicked");
+      navigate("/bookdemo");
+    } catch (error) {
+      logger.error(`Navigation to /bookdemo failed: ${error.message}`);
+    }
+  };
+
+  const solutions = [
+    {
+      heading: "Transcription",
+      desp: "Convert your audio files to text in over 70 languages within minutes.",
+      src: "assets/signal.gif",
+    },
+    {
+      heading: "Live dictation",
+      desp: "Capture live exchanges, annotate and add screenshots.",
+      src: "assets/audio.gif",
+    },
+    {
+      heading: "Subtitling",
+      desp: "Automatic subtitle generator Customize the style and the subtitles of your video.",
+      src: "assets/cc.gif",
+    },
+    {
+      heading: "Analyser",
+      desp: "Automatic topic tagger, keywords, questions and more!",
+      src: "assets/document.gif",
+    },
+  ];
+  const requirements = [
+    {
+      req: "Sentiment analysis per topic and question",
+    },
+    {
+      req: "Automatic detection and annotation of topics in your transcript",
+    },
+    {
+      req: "Labeling of responses to open-ended questions in your studies",
+    },
+    {
+      req: "Statistical analysis on one or more audio, video and CSV files",
+    },
+  ];
+  return (
+    &lt;div>
+      &lt;Header />
+      &lt;Grid container className={classes.section1}>
+        
+        &lt;Grid item lg={6} xs={12}>
+          &lt;div>
+            &lt;h2 className={classes.heading}>
+              Transcribe &amp; Analyze Your Focus Group
+            &lt;/h2>
+            &lt;p className={classes.sologan}>
+              No more note-taking, Noota assists you on all your conversations.
+            &lt;/p>
+            &lt;ul>
+              &lt;li className={classes.list_item}>
+                &lt;b>Transcribe&lt;/b> in over 70 languages.
+              &lt;/li>
+              &lt;li className={classes.list_item}>
+                &lt;b>Record &lt;/b>and annotate your meetings live.{" "}
+              &lt;/li>
+              &lt;li className={classes.list_item}>
+                &lt;b>Detect&lt;/b> topics with the Noota analyzer.
+              &lt;/li>
+            &lt;/ul>
+            &lt;Link
+              component={RouterLink}
+              to="/bookdemo"
+              style={{ textDecoration: "none" }}
+            >
+              &lt;Button
+                onClick={handleClick}
+                style={{
+                  background: "#022ba7",
+                  color: "#ffff",
+                  borderRadius: "24px",
+                  fontWeight: "bold",
+                  padding: "8px 20px",
+                  marginLeft: "0.5rem",
+                  marginTop: "1rem",
+                }}
+              >
+                Try it for free
+              &lt;/Button>
+            &lt;/Link>
+          &lt;/div>
+        &lt;/Grid>
+
+        &lt;Grid item lg={6} xs={12}>
+          &lt;Box
+            sx={{
+              marginLeft: { lg: "8rem", xs: "0rem" },
+              height: 500,
+              marginTop: "1rem",
+              marginBottom: "1rem",
+            }}
+          >
+            &lt;Box
+              sx={{
+                marginBottom: "2rem",
+                padding: "1px",
+                width: { lg: "610", xs: "320" },
+              }}
+            >
+              &lt;img
+                src="assets/list.gif"
+                alt="editorimage"
+                className={classes.headerimg}
+              />
+            &lt;/Box>
+          &lt;/Box>
+        &lt;/Grid>
+      &lt;/Grid>
+      &lt;Carasouel />
+      &lt;br>&lt;/br>
+      &lt;Box sx={{ p: 4 }}>
+        &lt;h1 className={classes.heading}>Our Solutions designed for you&lt;/h1>
+      &lt;/Box>
+
+
+      &lt;Box
+        sx={{
+          display: { lg: "flex" },
+          padding: "5rem",
+          textAlign: "center",
+        }}
+      >
+        {solutions.map((item) => {
+          return (
+            &lt;Box>
+              &lt;img src={item.src} alt="gifimg" width="100" />
+              &lt;h1>{item.heading}&lt;/h1>
+              &lt;p>{item.desp}&lt;/p>
+            
+              &lt;Button
+                style={{
+                  background: "#022ba7",
+                  color: "#ffff",
+                  borderRadius: "24px",
+                  fontWeight: "bold",
+                  padding: "8px 20px",
+                  marginLeft: "0.5rem",
+                  marginTop: "1rem",
+                }}
+              >
+                Read more
+              &lt;/Button>
+            &lt;/Box>
+          );
+        })}
+      &lt;/Box>
+      &lt;Grid
+        container
+        padding="4rem"
+        justifyContent="center"
+        className={classes.req_div}
+      >
+        &lt;Grid item lg={6}>
+          &lt;h3 style={{ color: "#022ba7" }}>And what if we went further ?&lt;/h3>
+          {requirements.map((item) => {
+            return &lt;Box className={classes.req}>{item.req}&lt;/Box>;
+          })}
+          &lt;Box sx={{ display: { lg: "flex" }, gap: 10, mt: 5, ml: 5 }}>
+            &lt;Button
+              sx={{
+                borderRadius: "24rem",
+                backgroundColor: "#0A2640",
+                color: "#ffff",
+                padding: 1,
+                fontWeight: "bold",
+                width: 260,
+                "&amp;:hover": { color: "#022ba7" },
+              }}
+            >
+              Contact us for Analysis
+            &lt;/Button>
+            &lt;Button
+              sx={{
+                borderRadius: "24rem",
+                border: "2px solid #0A2640",
+                color: "#0A2640",
+                width: 150,
+              }}
+            >
+              Viewmore
+            &lt;/Button>
+          &lt;/Box>
+        &lt;/Grid>
+        &lt;Grid item lg={6}>
+          &lt;img src="assets/img1.png" alt="img1" width="380" />
+        &lt;/Grid>
+      &lt;/Grid>
+      &lt;Grid
+        container
+        padding="4rem"
+        justifyContent="center"
+        className={classes.section2}
+      >
+        &lt;Grid item lg={6}>
+          &lt;h1 style={{ color: "#ffff" }}>Secure &amp; Private&lt;/h1>
+          &lt;p style={{ color: "#ffff", fontSize: 24 }}>
+            Our servers are located in France and Belgium and respect GDPR.
+          &lt;/p>
+          &lt;p style={{ color: "#ffff", fontSize: 24 }}>
+            Yourdata is doubly encrypted.
+          &lt;/p>
+
+          &lt;Button
+            sx={{
+              border: "2px solid #ffff",
+              borderRadius: "24rem",
+              color: "#ffff",
+              width: 150,
+              padding: 1,
+              "&amp;:hover": { color: "#022ba7", backgroundColor: "#ffff" },
+            }}
+          >
+            Find Out more{" "}
+          &lt;/Button>
+        &lt;/Grid>
+        &lt;Grid item lg={6}>
+          &lt;img
+            src="assets/laptop.png"
+            alt="laptop"
+            width="300"
+            style={{ marginLeft: "3rem" }}
+          />
+        &lt;/Grid>
+      &lt;/Grid>
+      &lt;br />
+      &lt;div className={classes.section3}>
+        &lt;Grid container>
+          &lt;Grid item lg={6} justifyContent="center">
+            &lt;div
+              style={{
+                padding: "3rem",
+              }}
+            >
+              &lt;h1>Welcome to the Community&lt;/h1>
+              &lt;p>
+                Our customers like the simplicity of our transcription tool. We
+                remain fully available to help you implement analysis tools
+                custom made for your application.
+              &lt;/p>
+            &lt;/div>
+          &lt;/Grid>
+          &lt;Grid item lg={6}>
+            &lt;Slider />
+          &lt;/Grid>
+        &lt;/Grid>
+      &lt;/div>
+      &lt;Grid>
+        &lt;h1 className={classes.heading_center}>Noota it is,&lt;/h1>
+        &lt;Counter />
+      &lt;/Grid>
+      &lt;Box sx={{ p: 5 }}>
+        &lt;h1 className={classes.heading}>Our Plans and Prices&lt;/h1>
+      &lt;/Box>
+
+      &lt;Box
+        sx={{
+          display: { lg: "flex" },
+          gap: 10,
+          m: 2,
+
+          padding: "1rem",
+          justifyContent: "center",
+        }}
+      >
+        &lt;Cards
+          title={"Solo"}
+          sologan={"For indiviual"}
+          amount={"15$/user/month"}
+          color={"#0A2640"}
+          time={"5h per month"}
+          rate={"10$ per additional hour"}
+          btn={"#022BA7"}
+          bg={"#ffff"}
+          txt={"#0A2640"}
+          btncolor={"#ffff"}
+          ht={"299"}
+        />
+        &lt;Cards
+          title={"Pro"}
+          sologan={"For Proffesionals"}
+          amount={"30$/user/month"}
+          color={"#0A2640"}
+          time={"25h per month"}
+          rate={"5$ per additional hour"}
+          btn={"#ffff"}
+          bg={"#022BA7"}
+          txt={"#ffff"}
+          btncolor={"#0A2640"}
+          ht={"599"}
+        />
+        &lt;Cards
+          title={"Entetprise"}
+          sologan={"For teams ans businesses"}
+          amount={"**$/user/month"}
+          color={"#0A2640"}
+          time={"unlimites transcription"}
+          rate={"Min 5 users"}
+          btn={"#022BA7"}
+          bg={"#0A2640"}
+          txt={"#ffff"}
+          btncolor={"#ffff"}
+          ht={"299"}
+        />
+      &lt;/Box>
+      &lt;h1 className={classes.heading_center}>Our Partners&lt;/h1>
+      &lt;Box
+        sx={{
+          display: { lg: "flex" },
+          alignContent: "center",
+          textAlign: "center",
+          gap: 10,
+          justifyContent: "center",
+        }}
+      >
+        &lt;img src="assets/pat1.png" alt="partner" width="200" />
+        &lt;img src="assets/pat2.png" alt="partner" width="300" />{" "}
+        &lt;img src="assets/pat3.png" alt="partner" width="200" />{" "}
+        &lt;img src="assets/pat4.png" alt="partner" width="200" />
+      &lt;/Box>
+      &lt;br />2
+      &lt;Footer />
+    &lt;/div>
+  );
+
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 4.0.4</a> on Mon Jan 06 2025 20:35:54 GMT+0000 (Coordinated Universal Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+
+</body>
+</html>
