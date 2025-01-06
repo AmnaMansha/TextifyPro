@@ -168,17 +168,31 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: 18.x
+        cache: 'npm'
 
     - name: Install dependencies
-      run: npm install
+      run: |
+        npm ci
+        npm install -g jsdoc
+
+    - name: List files
+      run: ls -la
+
+    - name: Check jsdocConf.json
+      run: cat jsdocConf.json
 
     - name: Generate documentation
-      run: npm run docs
+      run: npx jsdoc -d docs --configure jsdocConf.json
+
+    - name: Check generated docs
+      run: ls -la docs
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
